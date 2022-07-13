@@ -112,12 +112,6 @@ const app = Vue.createApp({
     },
   },
 
-  computed: {
-    messageButton() {
-      return this.game ? "Fuir" : "Game Over";
-    },
-  },
-
   watch: {
     rounds(value) {
       if (value > 3) {
