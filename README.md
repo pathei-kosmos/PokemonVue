@@ -1,4 +1,4 @@
-# PokemonVue
+# PokemonVue :video_game:
 [Pokemon battle](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_battle) developed in team with [Vue.js](https://vuejs.org/). 
 
 
