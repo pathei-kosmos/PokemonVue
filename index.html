@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokemonVue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body id="app" v-cloak>
+    <audio autoplay>
+        <source src="./sounds/music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio> 
+    <div class="container">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            id="modal" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <img v-if="game === 'loss'" src="./img/giphy.gif">
+                    <img v-else-if="game === 'win'" src="./img/giphyWin.gif">
+                </div>
+            </div>
+        </div>
+
+        <header>
+            PokemonVue
+        </header>
+
+        <div class="bg">
+            <div class="adv-div">
+                <div class="progress">
+                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                    :style="{width: opp+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h3>Dracaufeu</h3>
+                <img src="./img/atkCara.gif" class="atkCara" :class="atkCara ? '#' : 'hideAtk'">
+                <img src="./img/atkSpeCara.gif" class="atkSpeCara" :class="atkSpeCara ? '#' : 'hideAtk'">
+                <img src="./img/spriteAdv.gif" :class="shakeAdv ? 'animate__animated animate__shakeX' : '#' " id="img-adversary">
+            </div>
+            <div class="pers-div">
+                <img src="./img/spritePers.gif" :class="[shakePlayer ? 'animate__animated animate__shakeX' : '#', runPlayer ? 'animate__animated animate__bounceOutLeft' : '#'  ]"id="img-player">
+                <h3>Carabaffe</h3>
+                <img src="./img/atkDraco.gif" class="atkDraco" :class="atkDrako ? '#' : 'hideAtk'">
+                <img src="./img/healCara.gif" class="healCara" :class="healCara ? '#' : 'hideAtk'">
+                <div class="progress">
+                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                        :style="{width: player+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="game === 'win'" class="text-center bg-actions">
+            <h2 class="mb-4">Victoire !</h2>
+            <div class="atk-div card  mx-auto" id="btn" @click="reloadPage(0)" style="width:15%">Rejouer</div>
+        </div>
+        <div v-else-if="game === 'loss'" class="text-center bg-actions">
+            <h2 class="mb-4">Perdu !</h2>
+            <div class="atk-div card mx-auto" style="width:15%" @click="reloadPage(0)" >Rejouer</div>
+        </div>
+        <div class="bg-actions">
+            <div class="actions-div" v-else>
+                <div :class="disabledBtn ? 'action-disabled' : 'atk-div' " @click="attackPlayer">
+                    Attaquer
+                </div>
+                <div :class="[!rounds ? 'atk-spe-div' : 'atk-spe-div-disabled', disabledBtn ? 'atk-spe-div-disabled' : 'atk-spe-div']" @click="attackSpePlayer">
+                    Att. Spé.
+                </div>
+                <div :class="disabledBtn ? 'action-disabled' : 'heal-div' " @click="soigner">
+                    Soigner
+                </div>
+                <div class='give-up-div' @click="gameOver">
+                    {{message}}
+                </div>
+            </div>
+        </div>
+
+        <div class="logs">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" v-for="(att) in log">{{att}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
