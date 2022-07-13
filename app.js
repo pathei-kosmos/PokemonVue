@@ -33,6 +33,7 @@ const app = Vue.createApp({
       this.log.push(this.att);
       this.attackAdv();
     },
+
     attackSpePlayer() {
       let deg = Math.floor(Math.random() * (16 - 10) + 10);
       this.opp -= deg;
@@ -82,11 +83,13 @@ const app = Vue.createApp({
       }, 1000);
       this.rounds++;
     },
+
     reloadPage(duree) {
       setTimeout(() => {
         window.location.reload();
       }, duree);
     },
+
     gameOver() {
       this.runPlayerF();
       this.disabledBtn = !this.disabledBtn;
@@ -95,18 +98,21 @@ const app = Vue.createApp({
         this.game = "loss";
       }, 500);
     },
+
     shakePlayerF() {
       this.shakePlayer = !this.shakePlayer;
       setTimeout(() => {
         this.shakePlayer = !this.shakePlayer;
       }, 300);
     },
+
     shakeAdversary() {
       this.shakeAdv = !this.shakeAdv;
       setTimeout(() => {
         this.shakeAdv = !this.shakeAdv;
       }, 300);
     },
+
     runPlayerF() {
       this.runPlayer = !this.runPlayer;
     },
@@ -120,6 +126,7 @@ const app = Vue.createApp({
         }, 1000);
       }
     },
+
     player(value) {
       if (value < 0) {
         this.player = 0;
@@ -134,6 +141,7 @@ const app = Vue.createApp({
         this.reloadPage(5000);
       }
     },
+    
     opp(value) {
       if (value < 0) {
         this.opp = 0;
