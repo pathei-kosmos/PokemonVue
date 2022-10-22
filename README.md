@@ -8,4 +8,3 @@
 [Alss019](https://github.com/Alss019)  
 [Nimaa31](https://github.com/Nimaa31)  
 [Hafarou-dine](https://github.com/Hafarou-dine)  
-[pathei-kosmos](https://github.com/pathei-kosmos)  
